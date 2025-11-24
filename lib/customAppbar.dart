@@ -4,11 +4,7 @@ class SpacezAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onMenuPressed;
   final VoidCallback? onBackPressed;
 
-  const SpacezAppBar({
-    super.key,
-    this.onMenuPressed,
-    this.onBackPressed,
-  });
+  const SpacezAppBar({super.key, this.onMenuPressed, this.onBackPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -20,26 +16,39 @@ class SpacezAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             // TOP ROW – Logo + Menu
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // Logo
-                  Image.asset(
-                    'assets/logo/logo.png',
-                    height: 26,
-                    fit: BoxFit.contain,
+                  Row(
+                    children: [
+                      SizedBox(
+                        child: Image.asset(
+                          'assets/logo/logo.png',
+                          height: 26,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      SizedBox(
+                        child: Image.asset("assets/logo/img_1.png", height: 70),
+                      ),
+                    ],
                   ),
-
                   // Menu Icon
                   IconButton(
                     onPressed: onMenuPressed,
-                    icon: const Icon(Icons.menu, color: Colors.black87, size: 28),
+                    icon: const Icon(
+                      Icons.menu,
+                      color: Colors.black87,
+                      size: 28,
+                    ),
                   ),
                 ],
               ),
             ),
-
+            const Divider(height: 1, thickness: 1),
             // BOTTOM ROW – Back + Title
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
