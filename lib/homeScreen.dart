@@ -164,7 +164,7 @@ class _CouponsScreenState extends State<CouponsScreen> {
                         Row(
                           children: [
                             Text(
-                              "₹9,500",
+                              "₹19,500",
                               style: TextStyle(
                                 fontSize: w * 0.04,
                                 color: Colors.red.shade900,
