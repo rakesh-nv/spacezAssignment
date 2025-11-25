@@ -14,13 +14,13 @@ class SpacezAppBar extends StatelessWidget implements PreferredSizeWidget {
         bottom: false,
         child: Column(
           children: [
-            // TOP ROW – Logo + Menu
+            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  // Logo
+                  
                   Row(
                     children: [
                       SizedBox(
@@ -36,7 +36,7 @@ class SpacezAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ),
                     ],
                   ),
-                  // Menu Icon
+                  
                   IconButton(
                     onPressed: onMenuPressed,
                     icon: const Icon(
@@ -49,13 +49,12 @@ class SpacezAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             const Divider(height: 1, thickness: 1),
-            // BOTTOM ROW – Back + Title
+            
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 children: [
                   IconButton(
-                    onPressed: onBackPressed ?? () => Navigator.pop(context),
                     constraints: const BoxConstraints(),
                     padding: EdgeInsets.zero,
                     icon: const Icon(
@@ -63,6 +62,7 @@ class SpacezAppBar extends StatelessWidget implements PreferredSizeWidget {
                       color: Colors.black87,
                       size: 20,
                     ),
+                    onPressed: () {},
                   ),
 
                   const SizedBox(width: 6),

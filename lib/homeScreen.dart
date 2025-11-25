@@ -29,7 +29,7 @@ class CouponsScreen extends StatefulWidget {
 
 class _CouponsScreenState extends State<CouponsScreen> {
   final ScrollController _scrollController = ScrollController();
-  bool _showBookingSummary = true; // Initially visible
+  bool _showBookingSummary = true;
   double lastOffset = 0;
 
   @override
@@ -39,12 +39,10 @@ class _CouponsScreenState extends State<CouponsScreen> {
     _scrollController.addListener(() {
       double offset = _scrollController.offset;
 
-      // Scrolling Down → Hide
       if (offset > lastOffset && _showBookingSummary) {
         setState(() => _showBookingSummary = false);
       }
 
-      // Scrolling Up → Show
       if (offset < lastOffset && !_showBookingSummary) {
         setState(() => _showBookingSummary = true);
       }
@@ -60,7 +58,6 @@ class _CouponsScreenState extends State<CouponsScreen> {
 
     return Stack(
       children: [
-        /// MAIN CONTENT (scrollable)
         SingleChildScrollView(
           controller: _scrollController,
           padding: EdgeInsets.all(w * 0.04),
@@ -106,12 +103,11 @@ class _CouponsScreenState extends State<CouponsScreen> {
                 onApply: () {},
               ),
 
-              SizedBox(height: h * 0.1), // Add space since bar covers bottom
+              SizedBox(height: h * 0.1),
             ],
           ),
         ),
 
-        /// —————— Floating Bottom Booking Summary ——————
         AnimatedPositioned(
           duration: const Duration(milliseconds: 200),
           bottom: _showBookingSummary ? 0 : -150,
@@ -123,7 +119,6 @@ class _CouponsScreenState extends State<CouponsScreen> {
     );
   }
 
-  /// Booking Summary Widget
   Widget _bookingSummary(BuildContext context) {
     final w = MediaQuery.of(context).size.width;
     final h = MediaQuery.of(context).size.height;
@@ -163,7 +158,6 @@ class _CouponsScreenState extends State<CouponsScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    /// PRICE + INFO
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -200,7 +194,6 @@ class _CouponsScreenState extends State<CouponsScreen> {
                       ],
                     ),
 
-                    /// RESERVE BUTTON
                     ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
@@ -263,10 +256,8 @@ class CouponCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          /// LEFT — BROWN DISCOUNT + CUT MARKS
           Stack(
             children: [
-              /// Brown background
               Container(
                 width: w * 0.19,
                 height: w * 0.40,
@@ -286,7 +277,6 @@ class CouponCard extends StatelessWidget {
                 ),
               ),
 
-              /// Cut marks (zig-zag)
               Positioned(
                 right: 0,
                 top: 0,
@@ -296,14 +286,12 @@ class CouponCard extends StatelessWidget {
             ],
           ),
 
-          /// RIGHT PART
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(w * 0.045),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  /// Title + Apply
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
